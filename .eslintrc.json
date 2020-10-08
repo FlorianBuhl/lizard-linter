@@ -1,0 +1,26 @@
+{
+    "env": {
+        "browser": true,
+        "jasmine": true,
+        "es2021": true
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "rules": {
+      "no-console": 0
+    },
+    "plugins": [
+      "jasmine"
+    ],
+    "globals": {
+      "atom" : true
+    },
+    "settings": {
+      "import/core-modules": ["atom"]
+    }
+}
