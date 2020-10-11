@@ -12,6 +12,13 @@ The lizard linter analyzes functions for
 For each of them an own warning threshold can be defined in the settings.
 On file save the tool will run automatically in the background and if a threshold is exceeded a warning will be shown in the editor.
 
+The cyclomatic complexity number is basically the number of decisions in the source code.
+The higher the number the more complex and the more tests you need to verify the function.
+E.g. a cyclomatic complexity of 3 would require at least 3 tests to verify the fuction.
+
+The linter shall help you to keep your functions slim and less complex and easy to test.
+
+
 The following languages are supported:
 - c
 - cpp
