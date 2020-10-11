@@ -123,3 +123,70 @@ describe('The lizard tool analyzes functions', () => {
     expect(messages[2].url).toBe('');
   });
 });
+
+describe('The lizard settings allow a disabling of each analysis by setting a 0', () => {
+  beforeEach(async () => {
+    await atom.packages.activatePackage('lizard-linter');
+  });
+
+  it('does not throw any warning if thresholdNumberOfParameters is set to 0', async () => {
+    atom.config.set('lizard-linter.thresholdCyclomaticComplexity', '2');
+    atom.config.set('lizard-linter.thresholdNumberOfParameters', '0');
+    atom.config.set('lizard-linter.thresholdLinesOfCodeWithoutComments', '10');
+    atom.config.set('lizard-linter.thresholdNumberOfTokens', '69');
+
+    const badPath = path.join(basePath, 'very_bad.py');
+    const editor = await atom.workspace.open(badPath);
+    const messages = await lint(editor);
+
+    expect(messages[0].excerpt).toBe('Too many lines of code (11>10) in function too_long_function');
+    expect(messages[1].excerpt).toBe('Too many tokens (70>69) in function too_many_tokens');
+    expect(messages[2].excerpt).toBe('cyclomatic complexity of 3 is too high for function bad_function');
+    expect(messages.length).toBe(3);
+  });
+
+  it('does not throw any warning if thresholdLinesOfCodeWithoutComments is set to 0', async () => {
+    atom.config.set('lizard-linter.thresholdCyclomaticComplexity', '2');
+    atom.config.set('lizard-linter.thresholdNumberOfParameters', '5');
+    atom.config.set('lizard-linter.thresholdLinesOfCodeWithoutComments', '0');
+    atom.config.set('lizard-linter.thresholdNumberOfTokens', '69');
+    const badPath = path.join(basePath, 'very_bad.py');
+    const editor = await atom.workspace.open(badPath);
+    const messages = await lint(editor);
+
+    expect(messages[0].excerpt).toBe('Too many parameters (6>5) for function too_many_parameters');
+    expect(messages[1].excerpt).toBe('Too many tokens (70>69) in function too_many_tokens');
+    expect(messages[2].excerpt).toBe('cyclomatic complexity of 3 is too high for function bad_function');
+    expect(messages.length).toBe(3);
+  });
+
+  it('does not throw any warning if thresholdNumberOfTokens is set to 0', async () => {
+    atom.config.set('lizard-linter.thresholdCyclomaticComplexity', '2');
+    atom.config.set('lizard-linter.thresholdNumberOfParameters', '5');
+    atom.config.set('lizard-linter.thresholdLinesOfCodeWithoutComments', '10');
+    atom.config.set('lizard-linter.thresholdNumberOfTokens', '0');
+    const badPath = path.join(basePath, 'very_bad.py');
+    const editor = await atom.workspace.open(badPath);
+    const messages = await lint(editor);
+
+    expect(messages[0].excerpt).toBe('Too many parameters (6>5) for function too_many_parameters');
+    expect(messages[1].excerpt).toBe('Too many lines of code (11>10) in function too_long_function');
+    expect(messages[2].excerpt).toBe('cyclomatic complexity of 3 is too high for function bad_function');
+    expect(messages.length).toBe(3);
+  });
+
+  it('does not throw any warning if thresholdCyclomaticComplexity is set to 0', async () => {
+    atom.config.set('lizard-linter.thresholdCyclomaticComplexity', '0');
+    atom.config.set('lizard-linter.thresholdNumberOfParameters', '5');
+    atom.config.set('lizard-linter.thresholdLinesOfCodeWithoutComments', '10');
+    atom.config.set('lizard-linter.thresholdNumberOfTokens', '69');
+    const badPath = path.join(basePath, 'very_bad.py');
+    const editor = await atom.workspace.open(badPath);
+    const messages = await lint(editor);
+
+    expect(messages[0].excerpt).toBe('Too many parameters (6>5) for function too_many_parameters');
+    expect(messages[1].excerpt).toBe('Too many lines of code (11>10) in function too_long_function');
+    expect(messages[2].excerpt).toBe('Too many tokens (70>69) in function too_many_tokens');
+    expect(messages.length).toBe(3);
+  });
+});
