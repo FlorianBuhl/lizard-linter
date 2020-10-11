@@ -1,7 +1,7 @@
 {
   "name": "lizard-linter",
   "main": "./lib/lizard-linter",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Excecutes lizard cyclomatic complexity tool",
   "keywords": [],
   "repository": "https://github.com/FlorianBuhl/lizard-linter.git",
