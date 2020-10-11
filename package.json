@@ -4,7 +4,7 @@
   "version": "0.3.0",
   "description": "Excecutes lizard cyclomatic complexity tool",
   "keywords": [],
-  "repository": "https://github.com/HansImmer/lizard-cyclomatic-complexity.git",
+  "repository": "https://github.com/FlorianBuhl/lizard-linter.git",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
