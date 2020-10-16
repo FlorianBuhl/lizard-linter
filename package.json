@@ -23,37 +23,34 @@
   "devDependencies": {
     "eslint": "^7.11.0",
     "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-config-google": "^0.14.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jasmine": "^4.1.1",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1"
+    "eslint-plugin-promise": "^4.2.1"
   },
   "configSchema": {
     "thresholdCyclomaticComplexity": {
       "type": "integer",
       "default": "15",
-      "description": "Threshold for cyclomatic complexity. Every cyclomatic complexity number above will be reported as warning",
+      "description": "Threshold for cyclomatic complexity. Every cyclomatic complexity number above will be reported as warning. If it is set to 0 then no check will be done at all.",
       "order": 1
     },
     "thresholdNumberOfParameters": {
       "type": "integer",
       "default": "5",
-      "description": "Threshold for maximum number of parameters. Every function with more parameters will be reported as warning",
+      "description": "Threshold for maximum number of parameters. Every function with more parameters will be reported as warning. If it is set to 0 then no check will be done at all",
       "order": 1
     },
     "thresholdLinesOfCodeWithoutComments": {
       "type": "integer",
       "default": "1000",
-      "description": "Threshold for maximum number of lines of code in a function without comments. Every function with more lines of code will be reported as warning",
+      "description": "Threshold for maximum number of lines of code in a function without comments. Every function with more lines of code will be reported as warning. If it is set to 0 then no check will be done at all.",
       "order": 1
     },
     "thresholdNumberOfTokens": {
       "type": "integer",
       "default": "8000",
-      "description": "Threshold for maximum number of tokens in a function. Every function with more tokens will be reported as warning",
+      "description": "Threshold for maximum number of tokens in a function. Every function with more tokens will be reported as warning. If it is set to 0 then no check will be done at all.",
       "order": 1
     }
   }
