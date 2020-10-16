@@ -4,6 +4,7 @@
         "jasmine": true,
         "es2021": true
     },
+    "ignorePatterns": ["./spec/files/JavaScript/*.js"],
     "extends": [
         "airbnb-base"
     ],
