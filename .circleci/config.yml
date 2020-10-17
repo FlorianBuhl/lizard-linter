@@ -37,6 +37,9 @@ jobs:
         name: Make build script executable
         command: chmod u+x build-package.sh
     - run:
+        name: Install lizard tooling
+        command: pip install lizard
+    - run:
         name: Run package tests
         command: ./build-package.sh
     # On MacOS:
