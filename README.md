@@ -17,21 +17,7 @@ On file save the tool will run automatically in the background and if a threshol
 For each of them an own warning threshold can be defined in the settings.
 
 The following languages are supported:
-- c
-- cpp
-- c#
-- GDScript
-- GoLang
-- Java
-- JavaScript
-- Lua
-- ObjectiveC
-- PHP
-- Python
-- Ruby
-- Rust
-- Scala
-- SWIFT
+c, cpp, c#, GDScript, GoLang, Java, JavaScript, Lua, ObjectiveC, PHP, Python, Ruby, Rust, Scala, SWIFT.
 
 ## Cyclomatic Complexity
 
