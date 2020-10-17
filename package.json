@@ -10,8 +10,8 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
-    "dependency-check": "^4.1.0",
-    "import-lazy": "^4.0.0"
+    "atom-linter": "^10.0.0",
+    "dependency-check": "^4.1.0"
   },
   "providedServices": {
     "linter": {
