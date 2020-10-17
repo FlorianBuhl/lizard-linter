@@ -40,4 +40,4 @@ $ apm install lizard-linter
 
 ## Licence
 
-This package is licensed under the MIT license. For details please check the [LICENSE.md](LICENSE.md) file.
+lizard-linter is released under the MIT license. For details please check the [LICENSE.md](LICENSE.md) file.
