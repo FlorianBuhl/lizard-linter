@@ -32,7 +32,8 @@ The linter shall help you to keep your functions slim and less complex and easy 
 The lizard tool itself is not part of this package.
 For details about lizard tool and how to install it please refer to https://github.com/terryyin/lizard.
 
-The lizard-linter package can be installed either by using the ATOM GUI or by:
+The lizard-linter package can be installed either by using the ATOM GUI
+go to Preferences > Install and search for `lizard-inter` or by:
 
 ```
 $ apm install lizard-linter
