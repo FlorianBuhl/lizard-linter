@@ -1,6 +1,6 @@
 # lizard-linter
 
-[![FlorianBuhl](https://circleci.com/gh/FlorianBuhl/lizard-linter.svg?style=shield)](https://app.circleci.com/pipelines/github/FlorianBuhl/lizard-linter)
+[![Build Status](https://img.shields.io/circleci/build/gh/FlorianBuhl/lizard-linter.svg?style=flat-square)](https://app.circleci.com/pipelines/github/FlorianBuhl/lizard-linter)
 
 This package executes lizard cyclomatic complexity tooling in [Atom Editor](http://atom.io)
 This package is basically an plugin for [Linter](https://github.com/AtomLinter/Linter).
