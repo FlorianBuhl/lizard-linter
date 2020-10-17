@@ -33,7 +33,7 @@ The following languages are supported:
 - Scala
 - SWIFT
 
-# Cyclomatic Complexity
+## Cyclomatic Complexity
 
 The cyclomatic complexity number is basically the number of decisions in the source code.
 The higher the number the more complex and the more tests you need to verify the function.
@@ -41,7 +41,7 @@ E.g. a cyclomatic complexity of 3 would require at least 3 tests to verify the f
 
 The linter shall help you to keep your functions slim and less complex and easy to test.
 
-# Installation
+## Installation
 
 The lizard tool itself is not part of this package.
 For details about lizard tool and how to install it please refer to https://github.com/terryyin/lizard.
@@ -49,9 +49,9 @@ For details about lizard tool and how to install it please refer to https://gith
 The lizard-linter package can be installed either by using the ATOM GUI or by:
 
 ```
-$ apm install lizard-Linter
+$ apm install lizard-linter
 ````
 
-# Licence
+## Licence
 
 This package is licensed under the MIT license. For details please check the [LICENSE.md](LICENSE.md) file.
