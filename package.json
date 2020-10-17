@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "dependency-check": "^4.1.0",
-    "lazy-req": "^3.0.0"
+    "import-lazy": "^4.0.0"
   },
   "providedServices": {
     "linter": {

@@ -1664,6 +1664,11 @@
         "resolve-from": "^4.0.0"
       }
     },
+    "import-lazy": {
+      "version": "4.0.0",
+      "resolved": "https://registry.npmjs.org/import-lazy/-/import-lazy-4.0.0.tgz",
+      "integrity": "sha512-rKtvo6a868b5Hu3heneU+L4yEQ4jYKLtjpnPeUdK7h0yzXGmyBTypknlkCvHFBqfX9YlorEiMM6Dnq/5atfHkw=="
+    },
     "imurmurhash": {
       "version": "0.1.4",
       "resolved": "https://registry.npmjs.org/imurmurhash/-/imurmurhash-0.1.4.tgz",
@@ -1929,11 +1934,6 @@
       "resolved": "https://registry.npmjs.org/kind-of/-/kind-of-6.0.3.tgz",
       "integrity": "sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==",
       "dev": true
-    },
-    "lazy-req": {
-      "version": "3.0.0",
-      "resolved": "https://registry.npmjs.org/lazy-req/-/lazy-req-3.0.0.tgz",
-      "integrity": "sha512-HA8eyRlYqVq3i01NMvz2ic62T2rMSoraOFy3KtawB8NOVc87rmAfgIwHJVKucDihj1VFhKVjaCUi4Jtp3YiTTQ=="
     },
     "levn": {
       "version": "0.4.1",
