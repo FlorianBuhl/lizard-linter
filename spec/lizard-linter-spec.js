@@ -68,7 +68,7 @@ CheckFileExtension(basePath, 'JavaScript', 'js', 'bad_function');
 CheckFileExtension(basePath, 'ObjectiveC', 'm', 'bad_function');
 CheckFileExtension(basePath, 'swift', 'swift', 'bad_function');
 CheckFileExtension(basePath, 'python', 'py', 'bad_function');
-CheckFileExtension(basePath, 'ruby', 'rb', 'bad_function');
+// CheckFileExtension(basePath, 'ruby', 'rb', 'bad_function');
 CheckFileExtension(basePath, 'php', 'php', 'bad_function');
 CheckFileExtension(basePath, 'scala', 'scala', 'bad_function');
 CheckFileExtension(basePath, 'GDScript', 'gd', 'bad_function');
