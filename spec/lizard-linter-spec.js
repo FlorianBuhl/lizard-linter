@@ -190,3 +190,31 @@ describe('The lizard settings allow a disabling of each analysis by setting a 0'
     expect(messages.length).toBe(3);
   });
 });
+
+fdescribe('The lizard settings allows to enable or disable a modified cyclomatic complexity calculation selectable in the settings', () => {
+  beforeEach(async () => {
+    await atom.packages.activatePackage('lizard-linter');
+  });
+
+  it('does calculate a switch case as CCN of one in case enabled', async () => {
+    atom.config.set('lizard-linter.modifiedCyclomaticComplexityCalculation', 'true');
+    atom.config.set('lizard-linter.thresholdCyclomaticComplexity', '1');
+
+    const badPath = path.join(basePath, 'switch_case.java');
+    const editor = await atom.workspace.open(badPath);
+    const messages = await lint(editor);
+
+    expect(messages[0].excerpt).toBe('cyclomatic complexity of 2 is too high for function TestClass::switchCase');
+  });
+
+  it('does calculate a switch case as CCN of one in case disabled', async () => {
+    atom.config.set('lizard-linter.modifiedCyclomaticComplexityCalculation', 'false');
+    atom.config.set('lizard-linter.thresholdCyclomaticComplexity', '1');
+
+    const badPath = path.join(basePath, 'switch_case.java');
+    const editor = await atom.workspace.open(badPath);
+    const messages = await lint(editor);
+
+    expect(messages[0].excerpt).toBe('cyclomatic complexity of 13 is too high for function TestClass::switchCase');
+  });
+});

@@ -53,6 +53,12 @@
       "default": "8000",
       "description": "Threshold for maximum number of tokens in a function. Every function with more tokens will be reported as warning. If it is set to 0 then no check will be done at all.",
       "order": 1
+    },
+    "modifiedCyclomaticComplexityCalculation": {
+      "type": "boolean",
+      "default": "false",
+      "description": "Modified cyclomatic complexity calculation. If enabled a switch case is incrementing the cyclomatic complexity number only of 1. If disabled the incrementation is depending on the number of cases.",
+      "order": 1
     }
   }
 }
