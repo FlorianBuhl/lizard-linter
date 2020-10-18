@@ -191,7 +191,7 @@ describe('The lizard settings allow a disabling of each analysis by setting a 0'
   });
 });
 
-fdescribe('The lizard settings allows to enable or disable a modified cyclomatic complexity calculation selectable in the settings', () => {
+describe('The lizard settings allows to enable or disable a modified cyclomatic complexity calculation selectable in the settings', () => {
   beforeEach(async () => {
     await atom.packages.activatePackage('lizard-linter');
   });
