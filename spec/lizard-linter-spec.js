@@ -225,24 +225,24 @@ describe('The lizard settings allows to exclude files by name or by fileextensio
   });
 
   it('does then not analyze the file at all if excluded by filename', async () => {
-    atom.config.set('lizard-linter.excludeFiles', 'bad.py');
+    atom.config.set('lizard-linter.excludeFiles', 'very_bad.py');
     atom.config.set('lizard-linter.thresholdCyclomaticComplexity', '1');
 
-    const badPath = path.join(basePath, 'switch_case.java');
+    const badPath = path.join(basePath, 'very_bad.py');
     const editor = await atom.workspace.open(badPath);
     const messages = await lint(editor);
 
-    expect(messages[0].excerpt).toBe('cyclomatic complexity of 2 is too high for function TestClass::switchCase');
+    expect(messages).toBe(null);
   });
 
   it('does then not analyze the file at all if excluded by fileextension', async () => {
-    atom.config.set('lizard-linter.modifiedCyclomaticComplexityCalculation', 'false');
-    atom.config.set('lizard-linter.thresholdCyclomaticComplexity', '1');
+    atom.config.set('lizard-linter.excludeFiles', 'very_bad.py');
+    atom.config.set('lizard-linter.excludeFileExtensions', 'py');
 
-    const badPath = path.join(basePath, 'switch_case.java');
+    const badPath = path.join(basePath, 'very_bad.py');
     const editor = await atom.workspace.open(badPath);
     const messages = await lint(editor);
 
-    expect(messages[0].excerpt).toBe('cyclomatic complexity of 13 is too high for function TestClass::switchCase');
+    expect(messages).toBe(null);
   });
 });
