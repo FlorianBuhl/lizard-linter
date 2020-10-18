@@ -69,6 +69,11 @@
       "type": "string",
       "default": "",
       "description": "Exclude fileExtensions"
+    },
+    "numberOfWorkingThreads": {
+      "type": "integer",
+      "default": "1",
+      "description": "number of working threads when lizard python tool is executed. Using a bigger number can fully utilize the CPU and is often faster."
     }
   }
 }
