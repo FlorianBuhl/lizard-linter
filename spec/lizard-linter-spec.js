@@ -218,3 +218,31 @@ describe('The lizard settings allows to enable or disable a modified cyclomatic 
     expect(messages[0].excerpt).toBe('cyclomatic complexity of 13 is too high for function TestClass::switchCase');
   });
 });
+
+describe('The lizard settings allows to exclude files by name or by fileextension', () => {
+  beforeEach(async () => {
+    await atom.packages.activatePackage('lizard-linter');
+  });
+
+  it('does then not analyze the file at all if excluded by filename', async () => {
+    atom.config.set('lizard-linter.excludeFiles', 'bad.py');
+    atom.config.set('lizard-linter.thresholdCyclomaticComplexity', '1');
+
+    const badPath = path.join(basePath, 'switch_case.java');
+    const editor = await atom.workspace.open(badPath);
+    const messages = await lint(editor);
+
+    expect(messages[0].excerpt).toBe('cyclomatic complexity of 2 is too high for function TestClass::switchCase');
+  });
+
+  it('does then not analyze the file at all if excluded by fileextension', async () => {
+    atom.config.set('lizard-linter.modifiedCyclomaticComplexityCalculation', 'false');
+    atom.config.set('lizard-linter.thresholdCyclomaticComplexity', '1');
+
+    const badPath = path.join(basePath, 'switch_case.java');
+    const editor = await atom.workspace.open(badPath);
+    const messages = await lint(editor);
+
+    expect(messages[0].excerpt).toBe('cyclomatic complexity of 13 is too high for function TestClass::switchCase');
+  });
+});

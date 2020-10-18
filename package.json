@@ -59,6 +59,16 @@
       "default": "false",
       "description": "Modified cyclomatic complexity calculation. If enabled a switch case is incrementing the cyclomatic complexity number only of 1. If disabled the incrementation is depending on the number of cases.",
       "order": 1
+    },
+    "excludeFiles": {
+      "type": "string",
+      "default": "",
+      "description": "Exclude files"
+    },
+    "excludeFileExtensions": {
+      "type": "string",
+      "default": "",
+      "description": "Exclude fileExtensions"
     }
   }
 }
