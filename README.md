@@ -19,6 +19,13 @@ For each of them an own warning threshold can be defined in the settings.
 The following languages are supported:
 c, cpp, c#, GDScript, GoLang, Java, JavaScript, Lua, ObjectiveC, PHP, Python, Ruby, Rust, Scala, SWIFT.
 
+It is possible to ignore certain analysis by setting the threshold value to 0. Then now warning will be raised.
+It is possible to ignore certain files or even file extension by the settings.
+
+An info view is available it can be opened by pressing Ctrl-Alt-j. It shows your current file analysis in a table.
+
+![](./media/lizard_linter_info_view.PNG)
+
 ## Cyclomatic Complexity
 
 The cyclomatic complexity number is basically the number of decisions in the source code.
