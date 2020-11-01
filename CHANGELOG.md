@@ -1,3 +1,6 @@
+## 0.4.0 - Third version
+* Corrected type in readme file.
+
 ## 0.3.0 - Third version
 * Added view showing current cyclomatic complexity info.
 
