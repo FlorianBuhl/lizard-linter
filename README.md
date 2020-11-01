@@ -13,6 +13,8 @@ The lizard linter analyzes functions for
 - the line number of  function without comments
 - the token number
 
+![](./media/lizard_linter.gif)
+
 On file save the tool will run automatically in the background and if a threshold is exceeded a warning will be shown in the editor.
 For each of them an own warning threshold can be defined in the settings.
 
