@@ -13,10 +13,11 @@
     "atom-linter": "^10.0.0",
     "dependency-check": "^4.1.0"
   },
-  "providedServices": {
-    "linter": {
+
+  "consumedServices": {
+    "linter-indie": {
       "versions": {
-        "2.0.0": "provideLinter"
+        "2.0.0": "consumeIndie"
       }
     }
   },
@@ -30,6 +31,16 @@
     "eslint-plugin-promise": "^4.2.1"
   },
   "configSchema": {
+    "ExecuteLintOnFileOpenEvent": {
+      "type": "boolean",
+      "default": "true",
+      "description": "If enabled the lint will be executed when a file is opened in atom."
+    },
+    "ExecuteLintOnFileSaveEvent": {
+      "type": "boolean",
+      "default": "true",
+      "description": "If enabled the lint will be executed when a file is saved."
+    },
     "thresholdCyclomaticComplexity": {
       "type": "integer",
       "default": "15",
