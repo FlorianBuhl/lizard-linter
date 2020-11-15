@@ -3,7 +3,7 @@ language: generic
 
 env:
   global:
-    - APM_TEST_PACKAGES=""
+    - APM_TEST_PACKAGES="linter"
     - ATOM_LINT_WITH_BUNDLED_NODE="true"
 
   matrix:
@@ -13,6 +13,10 @@ env:
 os:
   - linux
   - osx
+
+  # command to install dependencies
+install:
+  - pip install lizard
 
 ### Generic setup follows ###
 script:
