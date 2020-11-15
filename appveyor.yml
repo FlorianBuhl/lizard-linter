@@ -11,6 +11,9 @@ environment:
 build_script:
   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/atom/ci/master/build-package.ps1'))
 
+  install:
+- pip install lizard
+
 branches:
   only:
     - master
