@@ -2,7 +2,7 @@
 
 import * as path from 'path';
 
-const { lint } = require('../lib/lizard-linter.js').provideLinter();
+const lizardLinter = require('../lib/lizard-linter.js');
 
 const basePath = path.join(__dirname, 'files');
 
@@ -22,7 +22,7 @@ function CheckFileExtension(pathToTestFolder, language, fileEnding, badFunctionN
 
     it(`checks bad.${fileEnding} and reports the correct results`, async () => {
       const editor = await atom.workspace.open(badPath);
-      const messages = await lint(editor);
+      const messages = await lizardLinter.lint(editor);
 
       expect(messages.length).toBe(1);
       expect(messages[0].severity).toBe('warning');
@@ -33,13 +33,13 @@ function CheckFileExtension(pathToTestFolder, language, fileEnding, badFunctionN
 
     it(`finds nothing wrong with an empty.${fileEnding} file`, async () => {
       const editor = await atom.workspace.open(emptyPath);
-      const messages = await lint(editor);
+      const messages = await lizardLinter.lint(editor);
       expect(messages).toBe(null);
     });
 
     it(`finds nothing wrong with good.${fileEnding} file`, async () => {
       const editor = await atom.workspace.open(goodPath);
-      const messages = await lint(editor);
+      const messages = await lizardLinter.lint(editor);
       expect(messages.length).toBe(0);
     });
   });
@@ -91,7 +91,7 @@ describe('The lizard tool analyzes functions', () => {
   it('analyzes the number of parameters', async () => {
     const badPath = path.join(basePath, 'very_bad.py');
     const editor = await atom.workspace.open(badPath);
-    const messages = await lint(editor);
+    const messages = await lizardLinter.lint(editor);
 
     expect(messages[0].severity).toBe('warning');
     expect(messages[0].excerpt).toBe('Too many parameters (6>5) for function too_many_parameters');
@@ -102,7 +102,7 @@ describe('The lizard tool analyzes functions', () => {
   it('analyzes the number of code lines without comments', async () => {
     const badPath = path.join(basePath, 'very_bad.py');
     const editor = await atom.workspace.open(badPath);
-    const messages = await lint(editor);
+    const messages = await lizardLinter.lint(editor);
 
     expect(messages[1].severity).toBe('warning');
     expect(messages[1].excerpt).toBe('Too many lines of code (11>10) in function too_long_function');
@@ -114,7 +114,7 @@ describe('The lizard tool analyzes functions', () => {
   it('analyzes the number of tokens', async () => {
     const badPath = path.join(basePath, 'very_bad.py');
     const editor = await atom.workspace.open(badPath);
-    const messages = await lint(editor);
+    const messages = await lizardLinter.lint(editor);
 
     expect(messages[2].severity).toBe('warning');
     expect(messages[2].excerpt).toBe('Too many tokens (70>69) in function too_many_tokens');
@@ -137,7 +137,7 @@ describe('The lizard settings allow a disabling of each analysis by setting a 0'
 
     const badPath = path.join(basePath, 'very_bad.py');
     const editor = await atom.workspace.open(badPath);
-    const messages = await lint(editor);
+    const messages = await lizardLinter.lint(editor);
 
     expect(messages[0].excerpt).toBe('Too many lines of code (11>10) in function too_long_function');
     expect(messages[1].excerpt).toBe('Too many tokens (70>69) in function too_many_tokens');
@@ -152,7 +152,7 @@ describe('The lizard settings allow a disabling of each analysis by setting a 0'
     atom.config.set('lizard-linter.thresholdNumberOfTokens', '69');
     const badPath = path.join(basePath, 'very_bad.py');
     const editor = await atom.workspace.open(badPath);
-    const messages = await lint(editor);
+    const messages = await lizardLinter.lint(editor);
 
     expect(messages[0].excerpt).toBe('Too many parameters (6>5) for function too_many_parameters');
     expect(messages[1].excerpt).toBe('Too many tokens (70>69) in function too_many_tokens');
@@ -167,7 +167,7 @@ describe('The lizard settings allow a disabling of each analysis by setting a 0'
     atom.config.set('lizard-linter.thresholdNumberOfTokens', '0');
     const badPath = path.join(basePath, 'very_bad.py');
     const editor = await atom.workspace.open(badPath);
-    const messages = await lint(editor);
+    const messages = await lizardLinter.lint(editor);
 
     expect(messages[0].excerpt).toBe('Too many parameters (6>5) for function too_many_parameters');
     expect(messages[1].excerpt).toBe('Too many lines of code (11>10) in function too_long_function');
@@ -182,7 +182,7 @@ describe('The lizard settings allow a disabling of each analysis by setting a 0'
     atom.config.set('lizard-linter.thresholdNumberOfTokens', '69');
     const badPath = path.join(basePath, 'very_bad.py');
     const editor = await atom.workspace.open(badPath);
-    const messages = await lint(editor);
+    const messages = await lizardLinter.lint(editor);
 
     expect(messages[0].excerpt).toBe('Too many parameters (6>5) for function too_many_parameters');
     expect(messages[1].excerpt).toBe('Too many lines of code (11>10) in function too_long_function');
@@ -202,7 +202,7 @@ describe('The lizard settings allows to enable or disable a modified cyclomatic 
 
     const badPath = path.join(basePath, 'switch_case.java');
     const editor = await atom.workspace.open(badPath);
-    const messages = await lint(editor);
+    const messages = await lizardLinter.lint(editor);
 
     expect(messages[0].excerpt).toBe('cyclomatic complexity of 2 is too high for function TestClass::switchCase');
   });
@@ -213,36 +213,8 @@ describe('The lizard settings allows to enable or disable a modified cyclomatic 
 
     const badPath = path.join(basePath, 'switch_case.java');
     const editor = await atom.workspace.open(badPath);
-    const messages = await lint(editor);
+    const messages = await lizardLinter.lint(editor);
 
     expect(messages[0].excerpt).toBe('cyclomatic complexity of 13 is too high for function TestClass::switchCase');
-  });
-});
-
-describe('The lizard settings allows to exclude files by name or by fileextension', () => {
-  beforeEach(async () => {
-    await atom.packages.activatePackage('lizard-linter');
-  });
-
-  it('does then not analyze the file at all if excluded by filename', async () => {
-    atom.config.set('lizard-linter.excludeFiles', 'very_bad.py');
-    atom.config.set('lizard-linter.thresholdCyclomaticComplexity', '1');
-
-    const badPath = path.join(basePath, 'very_bad.py');
-    const editor = await atom.workspace.open(badPath);
-    const messages = await lint(editor);
-
-    expect(messages).toBe(null);
-  });
-
-  it('does then not analyze the file at all if excluded by fileextension', async () => {
-    atom.config.set('lizard-linter.excludeFiles', 'very_bad.py');
-    atom.config.set('lizard-linter.excludeFileExtensions', 'py');
-
-    const badPath = path.join(basePath, 'very_bad.py');
-    const editor = await atom.workspace.open(badPath);
-    const messages = await lint(editor);
-
-    expect(messages).toBe(null);
   });
 });
