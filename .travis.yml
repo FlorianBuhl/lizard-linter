@@ -5,7 +5,7 @@ env:
   global:
     - APM_TEST_PACKAGES="linter"
     - ATOM_LINT_WITH_BUNDLED_NODE="true"
-    - PATH=/opt/python/3.7.1/bin:$PATH
+    - PATH=/opt/python/3.5.2/bin:$PATH
 
   matrix:
     - ATOM_CHANNEL=stable
@@ -17,10 +17,10 @@ os:
 
 before_install:
   - python --version
-  - pip install --upgrade pip
 
   # command to install dependencies
 install:
+  - pip install --upgrade pip
   - pip install -U lizard
 
 ### Generic setup follows ###
