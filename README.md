@@ -1,7 +1,7 @@
 # lizard-linter
 
 [![Build Status Circle Ci Linux](https://img.shields.io/circleci/build/gh/FlorianBuhl/lizard-linter.svg?style=plastic)](https://app.circleci.com/pipelines/github/FlorianBuhl/lizard-linter)
-[![Build Status Travis Ci OSX](https://travis-ci.com/FlorianBuhl/lizard-linter.svg?branch=master)](https://travis-ci.com/FlorianBuhl/lizard-linter)
+[![Build Status Travis Ci OSX](https://img.shields.io/travis/com/FlorianBuhl/lizard-linter?style=plastic)](https://travis-ci.com/FlorianBuhl/lizard-linter)
 [![Dependencies](https://img.shields.io/david/FlorianBuhl/lizard-linter?style=plastic)](https://david-dm.org/FlorianBuhl/lizard-linter)
 
 This package executes lizard cyclomatic complexity tooling in [Atom Editor](http://atom.io)
