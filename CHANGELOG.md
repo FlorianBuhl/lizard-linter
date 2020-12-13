@@ -1,3 +1,6 @@
+## 0.5.2 - Default Thread setting
+* Updated default threads to 4. To speed up linting.
+
 ## 0.5.1 - Patched pics
 * Pics are now visible in atom.io
 
