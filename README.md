@@ -26,7 +26,7 @@ It is possible to ignore certain files or even file extension by the settings.
 
 An info view is available it can be opened by pressing Ctrl-Alt-j. It shows your current file analysis in a table.
 
-![lizard info of current opened file](./media/lizard_linter_info_view.PNG)
+![lizard info of current opened file](https://github.com/FlorianBuhl/lizard-linter/blob/master/media/lizard_linter_info_view.PNG)
 
 ## Cyclomatic Complexity
 
