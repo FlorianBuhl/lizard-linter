@@ -1,3 +1,6 @@
+## 0.5.1 - Patched pics
+* Pics are now visible in atom.io
+
 ## 0.5.0 - Fifth version
 * Updated readme file
 * Switched to Indi style
