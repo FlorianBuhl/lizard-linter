@@ -1,4 +1,9 @@
-## 0.4.0 - Third version
+## 0.5.0 - Fifth version
+* Updated readme file
+* Switched to Indi style
+* Circle Ci periodic build working again
+
+## 0.4.0 - Fourth version
 * Corrected type in readme file.
 
 ## 0.3.0 - Third version
