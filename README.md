@@ -13,7 +13,7 @@ The lizard linter analyzes functions for
 - the line number of  function without comments
 - the token number
 
-![](./media/lizard_linter.gif)
+![lizard linter message example](https://github.com/FlorianBuhl/lizard-linter/blob/master/media/lizard_linter.gif)
 
 On file save the tool will run automatically in the background and if a threshold is exceeded a warning will be shown in the editor.
 For each of them an own warning threshold can be defined in the settings.
@@ -26,7 +26,7 @@ It is possible to ignore certain files or even file extension by the settings.
 
 An info view is available it can be opened by pressing Ctrl-Alt-j. It shows your current file analysis in a table.
 
-![](./media/lizard_linter_info_view.PNG)
+![lizard info of current opened file](https://github.com/FlorianBuhl/lizard-linter/blob/master/media/lizard_linter_info_view.PNG)
 
 ## Cyclomatic Complexity
 
