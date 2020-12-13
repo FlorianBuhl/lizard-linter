@@ -12,11 +12,11 @@ env:
     - ATOM_CHANNEL=beta
 
 os:
-  - linux
   - osx
 
 before_install:
   - python --version
+  - pyenv global 3.5.2
 
   # command to install dependencies
 install:
