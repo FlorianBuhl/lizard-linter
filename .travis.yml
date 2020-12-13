@@ -25,7 +25,6 @@ before_install:
   # command to install dependencies
 install:
   - pip install -U lizard
-  - apm install
 
 ### Generic setup follows ###
 script:
