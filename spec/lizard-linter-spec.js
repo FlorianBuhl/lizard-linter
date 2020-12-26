@@ -3,6 +3,7 @@
 import * as path from 'path';
 
 const lizardLinter = require('../lib/lizard-linter.js');
+const lizardLinterView = require('../lib/lizard-linter-info-view.js');
 
 const basePath = path.join(__dirname, 'files');
 
@@ -216,5 +217,26 @@ describe('The lizard settings allows to enable or disable a modified cyclomatic 
     const messages = await lizardLinter.lint(editor);
 
     expect(messages[0].excerpt).toBe('cyclomatic complexity of 13 is too high for function TestClass::switchCase');
+  });
+});
+
+describe('The lizard tool is able to be executed manually with the current opened file', () => {
+  beforeEach(async () => {
+    await atom.packages.activatePackage('lizard-linter');
+    atom.config.set('lizard-linter.thresholdCyclomaticComplexity', '1');
+
+    spyOn(lizardLinterView.prototype, 'update');
+  });
+
+  it('updates the data model shown in the view', async () => {
+    const badPath = path.join(basePath, 'bad.java');
+    await atom.workspace.open(badPath);
+    await lizardLinter.executeLint();
+
+    expect(lizardLinterView.prototype.update).toHaveBeenCalled();
+  });
+
+  it('does not crush in case no file is opened', async () => {
+    await lizardLinter.executeLint();
   });
 });
